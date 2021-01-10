@@ -1,0 +1,30 @@
+org: '1251891378'
+app: egg-layer-test
+stage: dev
+component: egg
+name: egg-a3YlJ7Ozn
+inputs:
+  src:
+    src: ./
+    exclude:
+      - .env
+      - node_modules/**
+  # handler: sl_handler.handler
+  region: ap-guangzhou
+  runtime: Nodejs10.15
+  # namespace: default
+  # functionName: egg_component_kq5bzkr
+  apigatewayConf:
+    protocols:
+      - http
+      - https
+    environment: release
+    serviceTimeout: 60
+    autoCreateDns: false
+  functionConf:
+    eip: false
+    timeout: 5
+    memorySize: 128
+  layers:
+    - name: '${output:${stage}:${app}:egg-layer-test-layer.name}'
+      version: '${output:${stage}:${app}:egg-layer-test-layer.version}'
